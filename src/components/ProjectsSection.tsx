@@ -1,13 +1,13 @@
 import { useState } from "react";
-import { ExternalLink, Github, X, Layers, ShoppingCart, Globe, Bot } from "lucide-react";
+import { ExternalLink, Github, X, ArrowUpRight } from "lucide-react";
 
 /* ── Easy to modify: edit this array to update your projects ── */
 const projects = [
   {
-    icon: <ShoppingCart size={22} />,
+    category: "SYSTEM ARCHITECTURE",
     title: "Self-Checkout Intelligent",
-    subtitle: "Leader Solution Tactile",
-    description: "Solution de caisse automatique intelligente pour supermarchés.",
+    description:
+      "Solution de caisse automatique intelligente pour supermarchés avec reconnaissance de produits par ML et optimisation des performances de 30%.",
     fullDescription:
       "Conception et développement d'une solution self-checkout intelligente intégrant un modèle de machine learning (TensorFlow) pour la reconnaissance automatique de produits. L'application offre une interface moderne et fluide, avec une optimisation des performances de 30%.",
     tech: ["Next.js", "NestJS", "TypeScript", "Redux", "PostgreSQL", "TensorFlow"],
@@ -16,14 +16,16 @@ const projects = [
       "Optimisation des performances de 30%",
       "Architecture full-stack moderne",
     ],
+    gradient: "from-blue-900/80 via-indigo-900/60 to-card",
+    size: "large" as const,
     github: "#",
     demo: "#",
   },
   {
-    icon: <Globe size={22} />,
+    category: "FULL STACK",
     title: "Trip Hive",
-    subtitle: "Verse",
-    description: "Plateforme de tourisme éco-responsable avec interface moderne.",
+    description:
+      "Community-driven itinerary engine featuring intelligent geographic clustering for eco-responsible tourism.",
     fullDescription:
       "Développement complet du site Trip Hive, une plateforme de tourisme éco-responsable. Le projet inclut une interface utilisateur performante et responsive, construite avec Next.js et MongoDB, déployée via Docker.",
     tech: ["Next.js", "MongoDB", "Docker", "Scrum"],
@@ -32,14 +34,16 @@ const projects = [
       "Base de données NoSQL performante",
       "Méthodologie Agile / Scrum",
     ],
+    gradient: "from-emerald-900/60 via-teal-900/40 to-card",
+    size: "medium" as const,
     github: "#",
     demo: "#",
   },
   {
-    icon: <Layers size={22} />,
+    category: "ENTERPRISE",
     title: "Dashboards Interactifs",
-    subtitle: "PeakSource",
-    description: "Visualisation et suivi de données métiers en temps réel.",
+    description:
+      "Visualisation et suivi de données métiers en temps réel avec graphiques interactifs et interfaces accessibles.",
     fullDescription:
       "Développement de dashboards interactifs pour la visualisation et le suivi de données métiers. Création d'interfaces utilisateurs modernes avec de bonnes pratiques de design, d'accessibilité et de performance.",
     tech: ["React.js", "Vite", "ChartJS", "Axios", "TailwindCSS"],
@@ -48,14 +52,16 @@ const projects = [
       "Interface responsive et accessible",
       "Intégration API avec Axios",
     ],
+    gradient: "from-violet-900/60 via-purple-900/40 to-card",
+    size: "medium" as const,
     github: "#",
     demo: "#",
   },
   {
-    icon: <Bot size={22} />,
+    category: "ROBOTICS & IOT",
     title: "RoboTech INSAT",
-    subtitle: "Association",
-    description: "Membre actif du club de robotique — projets Arduino & IoT.",
+    description:
+      "Projets de robotique embarquée avec Arduino et capteurs IoT — prototypage rapide et compétitions.",
     fullDescription:
       "Participation active au sein du club RoboTech de l'INSAT. Travail sur des projets de robotique embarquée avec Arduino et capteurs IoT, développement de prototypes et collaboration en équipe sur des compétitions.",
     tech: ["Arduino", "IoT", "C++", "Prototypage"],
@@ -64,6 +70,8 @@ const projects = [
       "Programmation embarquée en C++",
       "Collaboration en équipe multidisciplinaire",
     ],
+    gradient: "from-cyan-900/60 via-sky-900/40 to-card",
+    size: "full" as const,
     github: "#",
   },
 ];
@@ -76,48 +84,103 @@ const ProjectsSection = () => {
       <section id="projects" className="py-24">
         <div className="container">
           <p className="section-label mb-3">Portfolio</p>
-          <h2 className="section-title mb-4">Featured Projects</h2>
+          <h2 className="section-title mb-4">
+            Selected <span className="text-primary">Works</span>
+          </h2>
           <p className="text-muted-foreground max-w-xl mb-14">
-            A selection of projects that showcase my approach to problem-solving
-            and technical execution.
+            Exploring the intersection of high-performance architecture and
+            modern digital experiences. A collection of full-stack engineering
+            and product design.
           </p>
 
-          <div className="grid sm:grid-cols-2 gap-6">
-            {projects.map((project) => (
-              <button
-                key={project.title}
-                onClick={() => setSelected(project)}
-                className="glass-card text-left group hover:border-primary/40 transition-all duration-300 cursor-pointer"
-              >
-                <div className="flex items-center gap-3 mb-4">
-                  <span className="text-primary">{project.icon}</span>
-                  <div>
-                    <h3 className="text-lg font-semibold font-heading group-hover:text-primary transition-colors">
-                      {project.title}
-                    </h3>
-                    <p className="text-xs text-muted-foreground">{project.subtitle}</p>
-                  </div>
-                </div>
-                <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {project.tech.slice(0, 4).map((t) => (
-                    <span
-                      key={t}
-                      className="px-2 py-1 text-xs bg-secondary text-muted-foreground rounded"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                  {project.tech.length > 4 && (
-                    <span className="px-2 py-1 text-xs text-primary">
-                      +{project.tech.length - 4}
-                    </span>
-                  )}
-                </div>
-              </button>
-            ))}
+          {/* Bento Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-5">
+            {/* Row 1 — large + medium */}
+            <div
+              onClick={() => setSelected(projects[0])}
+              className="md:col-span-7 group cursor-pointer rounded-2xl border border-border overflow-hidden relative min-h-[320px] flex flex-col justify-end"
+            >
+              <div className={`absolute inset-0 bg-gradient-to-t ${projects[0].gradient}`} />
+              {/* Decorative grid lines */}
+              <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h40v40' fill='none' stroke='white' stroke-width='0.5'/%3E%3C/svg%3E\")" }} />
+              <div className="relative p-6 z-10">
+                <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-primary mb-2 block">
+                  {projects[0].category}
+                </span>
+                <h3 className="text-2xl md:text-3xl font-bold font-heading mb-1 group-hover:text-primary transition-colors">
+                  {projects[0].title}
+                </h3>
+              </div>
+              <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                <ArrowUpRight size={20} className="text-primary" />
+              </div>
+            </div>
+
+            <div
+              onClick={() => setSelected(projects[1])}
+              className="md:col-span-5 group cursor-pointer rounded-2xl border border-border overflow-hidden relative min-h-[320px] flex flex-col justify-end"
+            >
+              <div className={`absolute inset-0 bg-gradient-to-t ${projects[1].gradient}`} />
+              <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h40v40' fill='none' stroke='white' stroke-width='0.5'/%3E%3C/svg%3E\")" }} />
+              <div className="relative p-6 z-10">
+                <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-primary mb-2 block">
+                  {projects[1].category}
+                </span>
+                <h3 className="text-2xl font-bold font-heading mb-1 group-hover:text-primary transition-colors">
+                  {projects[1].title}
+                </h3>
+              </div>
+              <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                <ArrowUpRight size={20} className="text-primary" />
+              </div>
+            </div>
+
+            {/* Row 2 — medium + medium */}
+            <div
+              onClick={() => setSelected(projects[2])}
+              className="md:col-span-5 group cursor-pointer rounded-2xl border border-border overflow-hidden relative min-h-[320px] flex flex-col justify-end"
+            >
+              <div className={`absolute inset-0 bg-gradient-to-t ${projects[2].gradient}`} />
+              <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h40v40' fill='none' stroke='white' stroke-width='0.5'/%3E%3C/svg%3E\")" }} />
+              <div className="relative p-6 z-10">
+                <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-primary mb-2 block">
+                  {projects[2].category}
+                </span>
+                <h3 className="text-2xl font-bold font-heading mb-1 group-hover:text-primary transition-colors">
+                  {projects[2].title}
+                </h3>
+              </div>
+              <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                <ArrowUpRight size={20} className="text-primary" />
+              </div>
+            </div>
+
+            <div
+              onClick={() => setSelected(projects[3])}
+              className="md:col-span-7 group cursor-pointer rounded-2xl border border-border overflow-hidden relative min-h-[320px] flex flex-col justify-end"
+            >
+              <div className={`absolute inset-0 bg-gradient-to-t ${projects[3].gradient}`} />
+              <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h40v40' fill='none' stroke='white' stroke-width='0.5'/%3E%3C/svg%3E\")" }} />
+              <div className="relative p-6 z-10">
+                <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-primary mb-2 block">
+                  {projects[3].category}
+                </span>
+                <h3 className="text-2xl md:text-3xl font-bold font-heading mb-1 group-hover:text-primary transition-colors">
+                  {projects[3].title}
+                </h3>
+              </div>
+              <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                <ArrowUpRight size={20} className="text-primary" />
+              </div>
+            </div>
+
+            {/* Descriptions row */}
+            <p className="md:col-span-7 text-sm text-muted-foreground -mt-2 px-1">
+              {projects[0].description}
+            </p>
+            <p className="md:col-span-5 text-sm text-muted-foreground -mt-2 px-1 hidden md:block">
+              {projects[1].description}
+            </p>
           </div>
         </div>
       </section>
@@ -130,7 +193,7 @@ const ProjectsSection = () => {
         >
           <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
           <div
-            className="relative z-10 w-full max-w-lg bg-card border border-border rounded-xl p-6 shadow-2xl animate-in fade-in zoom-in-95 duration-200"
+            className="relative z-10 w-full max-w-lg bg-card border border-border rounded-2xl p-6 shadow-2xl animate-in fade-in zoom-in-95 duration-200"
             onClick={(e) => e.stopPropagation()}
           >
             <button
@@ -140,13 +203,10 @@ const ProjectsSection = () => {
               <X size={20} />
             </button>
 
-            <div className="flex items-center gap-3 mb-4">
-              <span className="text-primary">{selected.icon}</span>
-              <div>
-                <h3 className="text-xl font-bold font-heading">{selected.title}</h3>
-                <p className="text-xs text-muted-foreground">{selected.subtitle}</p>
-              </div>
-            </div>
+            <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-primary mb-2 block">
+              {selected.category}
+            </span>
+            <h3 className="text-2xl font-bold font-heading mb-4">{selected.title}</h3>
 
             <p className="text-sm text-muted-foreground leading-relaxed mb-5">
               {selected.fullDescription}
@@ -172,7 +232,7 @@ const ProjectsSection = () => {
               {selected.tech.map((t) => (
                 <span
                   key={t}
-                  className="px-2 py-1 text-xs bg-secondary text-muted-foreground rounded"
+                  className="px-2.5 py-1 text-xs bg-secondary text-muted-foreground rounded-lg"
                 >
                   {t}
                 </span>
