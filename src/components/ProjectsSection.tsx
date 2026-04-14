@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ExternalLink, Github, X, ArrowUpRight } from "lucide-react";
+import { ExternalLink, Github, X, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 
 /* ── Easy to modify: edit this array to update your projects ── */
 const projects = [
