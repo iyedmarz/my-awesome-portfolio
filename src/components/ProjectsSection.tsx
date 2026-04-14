@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ExternalLink, Github, X, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ExternalLink, Github, X, ArrowUpRight } from "lucide-react";
 
 /* ── Easy to modify: edit this array to update your projects ── */
 const projects = [
@@ -200,11 +200,6 @@ function ProjectModal({
   project: (typeof projects)[number];
   onClose: () => void;
 }) {
-  const [currentImg, setCurrentImg] = useState(0);
-  const images = project.images || [project.image];
-
-  const prev = () => setCurrentImg((i) => (i === 0 ? images.length - 1 : i - 1));
-  const next = () => setCurrentImg((i) => (i === images.length - 1 ? 0 : i + 1));
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={onClose}>
@@ -213,26 +208,9 @@ function ProjectModal({
         className="relative z-10 w-full max-w-2xl max-h-[90vh] bg-card border border-border rounded-2xl shadow-2xl animate-in fade-in zoom-in-95 duration-200 overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Image gallery */}
-        <div className="relative h-64 overflow-hidden group">
-          <img src={images[currentImg]} alt={project.title} className="w-full h-full object-cover object-top transition-opacity duration-300" />
+        <div className="relative h-48 overflow-hidden">
+          <img src={project.image} alt={project.title} className="w-full h-full object-cover object-top" />
           <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent" />
-
-          {images.length > 1 && (
-            <>
-              <button onClick={prev} className="absolute left-3 top-1/2 -translate-y-1/2 bg-card/80 hover:bg-card border border-border rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
-                <ChevronLeft size={18} className="text-foreground" />
-              </button>
-              <button onClick={next} className="absolute right-3 top-1/2 -translate-y-1/2 bg-card/80 hover:bg-card border border-border rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
-                <ChevronRight size={18} className="text-foreground" />
-              </button>
-              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
-                {images.map((_, i) => (
-                  <button key={i} onClick={() => setCurrentImg(i)} className={`w-2 h-2 rounded-full transition-colors ${i === currentImg ? "bg-primary" : "bg-muted-foreground/40"}`} />
-                ))}
-              </div>
-            </>
-          )}
         </div>
 
         <div className="p-6">
@@ -266,16 +244,6 @@ function ProjectModal({
             </div>
           )}
 
-          {/* Thumbnail strip */}
-          {images.length > 1 && (
-            <div className="flex gap-2 mb-6 overflow-x-auto pb-2">
-              {images.map((img, i) => (
-                <button key={i} onClick={() => setCurrentImg(i)} className={`shrink-0 w-20 h-14 rounded-lg overflow-hidden border-2 transition-colors ${i === currentImg ? "border-primary" : "border-border hover:border-primary/40"}`}>
-                  <img src={img} alt={`${project.title} ${i + 1}`} className="w-full h-full object-cover object-top" />
-                </button>
-              ))}
-            </div>
-          )}
 
           <div className="flex flex-wrap gap-2 mb-6">
             {project.tech.map((t) => (
