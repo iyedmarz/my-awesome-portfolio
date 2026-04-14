@@ -119,6 +119,8 @@ const ProjectsSection = () => {
 
 
             {/* Row 2 — medium + large */}
+            <ProjectCard project={projects[2]} span="md:col-span-5" onClick={() => setSelected(projects[2])} className="mt-6" />
+            <ProjectCard project={projects[3]} span="md:col-span-7" onClick={() => setSelected(projects[3])} className="mt-6" />
 
             {/* Row 3 — full width */}
             <ProjectCard project={projects[4]} span="md:col-span-12" onClick={() => setSelected(projects[4])} className="mt-6" />
