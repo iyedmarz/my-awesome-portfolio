@@ -117,31 +117,13 @@ const ProjectsSection = () => {
             <ProjectCard project={projects[0]} span="md:col-span-7" onClick={() => setSelected(projects[0])} />
             <ProjectCard project={projects[1]} span="md:col-span-5" onClick={() => setSelected(projects[1])} />
 
-            {/* Descriptions row 1 */}
-            <p className="md:col-span-7 text-sm text-muted-foreground -mt-2 px-1">
-              {projects[0].description}
-            </p>
-            <p className="md:col-span-5 text-sm text-muted-foreground -mt-2 px-1 hidden md:block">
-              {projects[1].description}
-            </p>
 
             {/* Row 2 — medium + large */}
             <ProjectCard project={projects[2]} span="md:col-span-5" onClick={() => setSelected(projects[2])} className="mt-6" />
             <ProjectCard project={projects[3]} span="md:col-span-7" onClick={() => setSelected(projects[3])} className="mt-6" />
 
-            {/* Descriptions row 2 */}
-            <p className="md:col-span-5 text-sm text-muted-foreground -mt-2 px-1">
-              {projects[2].description}
-            </p>
-            <p className="md:col-span-7 text-sm text-muted-foreground -mt-2 px-1 hidden md:block">
-              {projects[3].description}
-            </p>
-
             {/* Row 3 — full width */}
             <ProjectCard project={projects[4]} span="md:col-span-12" onClick={() => setSelected(projects[4])} className="mt-6" />
-            <p className="md:col-span-12 text-sm text-muted-foreground -mt-2 px-1">
-              {projects[4].description}
-            </p>
           </div>
         </div>
       </section>
@@ -181,9 +163,10 @@ function ProjectCard({
         <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-primary mb-2 block">
           {project.category}
         </span>
-        <h3 className="text-2xl md:text-3xl font-bold font-heading mb-1 group-hover:text-primary transition-colors">
+        <h3 className="text-2xl md:text-3xl font-bold font-heading mb-2 group-hover:text-primary transition-colors">
           {project.title}
         </h3>
+        <p className="text-sm text-muted-foreground line-clamp-2">{project.description}</p>
       </div>
       <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity z-10">
         <ArrowUpRight size={20} className="text-primary" />
