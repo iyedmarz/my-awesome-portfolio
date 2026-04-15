@@ -182,7 +182,7 @@ function ProjectModal({
 }: {
   project: (typeof projects)[number];
   onClose: () => void;
-) {
+}) {
   const images = project.images && project.images.length > 0 ? project.images : [project.image];
   const [currentImg, setCurrentImg] = useState(0);
 
