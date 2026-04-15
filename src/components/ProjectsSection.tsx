@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ExternalLink, Github, X, ArrowUpRight } from "lucide-react";
+import { ExternalLink, Github, X, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 
 /* ── Easy to modify: edit this array to update your projects ── */
 const projects = [
@@ -182,7 +182,12 @@ function ProjectModal({
 }: {
   project: (typeof projects)[number];
   onClose: () => void;
-}) {
+) {
+  const images = project.images && project.images.length > 0 ? project.images : [project.image];
+  const [currentImg, setCurrentImg] = useState(0);
+
+  const prev = () => setCurrentImg((i) => (i === 0 ? images.length - 1 : i - 1));
+  const next = () => setCurrentImg((i) => (i === images.length - 1 ? 0 : i + 1));
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={onClose}>
@@ -192,8 +197,23 @@ function ProjectModal({
         onClick={(e) => e.stopPropagation()}
       >
         <div className="relative h-48 overflow-hidden">
-          <img src={project.image} alt={project.title} className="w-full h-full object-cover object-top" />
+          <img src={images[currentImg]} alt={project.title} className="w-full h-full object-cover object-top transition-all duration-300" />
           <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent" />
+          {images.length > 1 && (
+            <>
+              <button onClick={prev} className="absolute left-3 top-1/2 -translate-y-1/2 bg-card/70 hover:bg-card rounded-full p-1.5 text-foreground transition-colors z-10">
+                <ChevronLeft size={18} />
+              </button>
+              <button onClick={next} className="absolute right-3 top-1/2 -translate-y-1/2 bg-card/70 hover:bg-card rounded-full p-1.5 text-foreground transition-colors z-10">
+                <ChevronRight size={18} />
+              </button>
+              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+                {images.map((_, idx) => (
+                  <button key={idx} onClick={() => setCurrentImg(idx)} className={`w-2 h-2 rounded-full transition-all ${idx === currentImg ? "bg-primary scale-110" : "bg-muted-foreground/50"}`} />
+                ))}
+              </div>
+            </>
+          )}
         </div>
 
         <div className="p-6">
