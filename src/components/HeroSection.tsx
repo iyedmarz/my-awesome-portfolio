@@ -72,21 +72,31 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Right - Photo Gallery Grid */}
-          <div className="grid grid-cols-3 gap-3">
-            {galleryImages.map((img, i) => (
-              <div
-                key={i}
-                className="relative aspect-square rounded-xl overflow-hidden border border-border group"
-              >
-                <img
-                  src={img.src}
-                  alt={img.alt}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
-            ))}
+          {/* Right - Photo Gallery Bento Grid */}
+          <div className="grid grid-cols-4 grid-rows-3 gap-3 h-[420px]">
+            {galleryImages.map((img, i) => {
+              const spans = [
+                "col-span-2 row-span-2",
+                "col-span-2 row-span-1",
+                "col-span-1 row-span-1",
+                "col-span-1 row-span-1",
+                "col-span-2 row-span-1",
+                "col-span-2 row-span-1",
+              ];
+              return (
+                <div
+                  key={i}
+                  className={`relative rounded-xl overflow-hidden border border-border group ${spans[i]}`}
+                >
+                  <img
+                    src={img.src}
+                    alt={img.alt}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
+              );
+            })}
           </div>
         </div>
 
