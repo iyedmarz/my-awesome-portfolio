@@ -49,12 +49,16 @@ const EducationSection = () => {
               {education.map((edu) => (
                 <div key={edu.degree} className="glass-card">
                   <div className="flex items-start justify-between mb-1">
-                    <h3 className="text-lg font-bold font-heading">{edu.degree}</h3>
+                    <h3 className="text-lg font-bold font-heading">
+                      {edu.degree}
+                    </h3>
                     <span className="text-xs text-muted-foreground bg-secondary px-3 py-1 rounded-full whitespace-nowrap ml-4">
                       {edu.period}
                     </span>
                   </div>
-                  <p className="text-sm text-muted-foreground mb-3">{edu.school}</p>
+                  <p className="text-sm text-muted-foreground mb-3">
+                    {edu.school}
+                  </p>
                   <p className="text-sm text-muted-foreground leading-relaxed mb-4">
                     {edu.description}
                   </p>
@@ -106,7 +110,11 @@ const EducationSection = () => {
             {/* Contact cards */}
             <div className="space-y-4 mb-8">
               {[
-                { label: "EMAIL", value: "iyedmarz@gmail.com", href: "mailto:iyedmarz@gmail.com" },
+                {
+                  label: "EMAIL",
+                  value: "iyedmarz@gmail.com",
+                  href: "mailto:iyedmarz@gmail.com",
+                },
                 {
                   label: "LINKEDIN",
                   value: "linkedin.com/in/iyed-marzouki",
@@ -125,8 +133,13 @@ const EducationSection = () => {
                   rel="noopener noreferrer"
                   className="glass-card flex items-center gap-4 hover:border-primary transition-colors"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary text-sm font-bold">
-                    {c.label[0]}
+                  <div className="w-10 h-10 rounded-lg  flex items-center justify-center text-primary text-sm font-bold">
+                    <img
+                      src={`/${c.label}.svg`}
+                      alt=""
+                      width="50"
+                      height="50"
+                    />
                   </div>
                   <div>
                     <p className="text-xs text-muted-foreground">{c.label}</p>
