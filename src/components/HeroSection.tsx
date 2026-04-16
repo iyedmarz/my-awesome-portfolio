@@ -1,4 +1,5 @@
 import { ArrowDown, MapPin, GraduationCap } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const galleryImages = [
   { src: "/lovable-uploads/1-2.jpg", alt: "Iyed at work" },
@@ -10,11 +11,11 @@ const galleryImages = [
 ];
 
 const HeroSection = () => {
+  const { t } = useLanguage();
   return (
     <section id="home" className="min-h-screen flex items-center pt-16 pb-12">
       <div className="container">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left - Text + Profile */}
           <div>
             <div className="flex items-center gap-5 mb-8">
               <div className="relative w-20 h-20 shrink-0">
@@ -26,7 +27,7 @@ const HeroSection = () => {
                 />
               </div>
               <div>
-                <p className="section-label mb-1">Full Stack Developer</p>
+                <p className="section-label mb-1">{t.hero.role}</p>
                 <h1 className="text-3xl md:text-4xl font-bold font-heading text-foreground leading-tight">
                   Iyed Marzougui
                 </h1>
@@ -34,45 +35,36 @@ const HeroSection = () => {
             </div>
 
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading text-foreground mb-6 leading-tight">
-              Building Digital
+              {t.hero.heading1}
               <br />
-              <span className="text-primary">Experiences</span>
+              <span className="text-primary">{t.hero.heading2}</span>
             </h2>
 
             <p className="text-lg text-muted-foreground max-w-xl mb-6 leading-relaxed">
-              Étudiant en Mastère Expert IT Dev et Data à l'école IRIS. Passionné
-              par le développement logiciel, je conçois des applications
-              performantes et des expériences utilisateur soignées.
+              {t.hero.bio}
             </p>
 
             <div className="flex flex-wrap gap-4 mb-8 text-sm text-muted-foreground">
               <span className="inline-flex items-center gap-1.5">
                 <MapPin size={14} className="text-primary" />
-                Paris, France
+                {t.hero.location}
               </span>
               <span className="inline-flex items-center gap-1.5">
                 <GraduationCap size={14} className="text-primary" />
-                École IRIS
+                {t.hero.school}
               </span>
             </div>
 
             <div className="flex gap-4">
-              <a
-                href="#contact"
-                className="px-6 py-3 bg-primary text-primary-foreground font-medium rounded-lg hover:opacity-90 transition-opacity"
-              >
-                Get In Touch
+              <a href="#contact" className="px-6 py-3 bg-primary text-primary-foreground font-medium rounded-lg hover:opacity-90 transition-opacity">
+                {t.hero.cta}
               </a>
-              <a
-                href="#experience"
-                className="px-6 py-3 border border-border text-foreground font-medium rounded-lg hover:border-primary hover:text-primary transition-all"
-              >
-                View Work
+              <a href="#experience" className="px-6 py-3 border border-border text-foreground font-medium rounded-lg hover:border-primary hover:text-primary transition-all">
+                {t.hero.work}
               </a>
             </div>
           </div>
 
-          {/* Right - Photo Gallery Bento Grid */}
           <div className="grid grid-cols-4 grid-rows-3 gap-3 h-[420px]">
             {galleryImages.map((img, i) => {
               const spans = [
@@ -84,15 +76,8 @@ const HeroSection = () => {
                 "col-span-2 row-span-1",
               ];
               return (
-                <div
-                  key={i}
-                  className={`relative rounded-xl overflow-hidden border border-border group ${spans[i]}`}
-                >
-                  <img
-                    src={img.src}
-                    alt={img.alt}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
+                <div key={i} className={`relative rounded-xl overflow-hidden border border-border group ${spans[i]}`}>
+                  <img src={img.src} alt={img.alt} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
               );
@@ -100,10 +85,7 @@ const HeroSection = () => {
           </div>
         </div>
 
-        <a
-          href="#skills"
-          className="mt-16 inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors animate-bounce"
-        >
+        <a href="#skills" className="mt-16 inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors animate-bounce">
           <ArrowDown size={20} />
         </a>
       </div>
