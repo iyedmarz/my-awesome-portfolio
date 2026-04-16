@@ -4,8 +4,11 @@ const Footer = () => {
       <div className="container text-center">
         <div className="flex justify-center gap-8 mb-4">
           {[
-            { label: "GITHUB", href: "https://github.com/iyedmarzougui" },
-            { label: "LINKEDIN", href: "https://linkedin.com/in/iyed-marzouki" },
+            { label: "GITHUB", href: "https://github.com/iyedmarz" },
+            {
+              label: "LINKEDIN",
+              href: "https://www.linkedin.com/in/iyed-marzouki/",
+            },
           ].map((link) => (
             <a
               key={link.label}
