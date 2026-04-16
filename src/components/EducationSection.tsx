@@ -45,7 +45,12 @@ const ContactForm = () => {
     setSending(true);
     setStatus("idle");
     emailjs
-      .sendForm("service_eajmmyj", "template_0inc7kn", formRef.current, "xte223UBcDtxZBAWZ")
+      .sendForm(
+        "service_eajmmyj",
+        "template_q6bk1ag",
+        formRef.current,
+        "xte223UBcDtxZBAWZ",
+      )
       .then(() => {
         setStatus("success");
         formRef.current?.reset();
@@ -56,15 +61,42 @@ const ContactForm = () => {
 
   return (
     <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
-      <input name="from_name" type="text" placeholder="Name" className="w-full px-4 py-3 bg-secondary border border-border rounded-lg text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:border-primary transition-colors" />
-      <input name="from_email" type="email" placeholder="Email Address" className="w-full px-4 py-3 bg-secondary border border-border rounded-lg text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:border-primary transition-colors" />
-      <textarea name="message" placeholder="Message" rows={4} className="w-full px-4 py-3 bg-secondary border border-border rounded-lg text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:border-primary transition-colors resize-none" />
-      <button type="submit" disabled={sending} className="w-full py-3 bg-primary text-primary-foreground font-medium rounded-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-2 disabled:opacity-50">
+      <input
+        name="from_name"
+        type="text"
+        placeholder="Name"
+        className="w-full px-4 py-3 bg-secondary border border-border rounded-lg text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:border-primary transition-colors"
+      />
+      <input
+        name="from_email"
+        type="email"
+        placeholder="Email Address"
+        className="w-full px-4 py-3 bg-secondary border border-border rounded-lg text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:border-primary transition-colors"
+      />
+      <textarea
+        name="message"
+        placeholder="Message"
+        rows={4}
+        className="w-full px-4 py-3 bg-secondary border border-border rounded-lg text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:border-primary transition-colors resize-none"
+      />
+      <button
+        type="submit"
+        disabled={sending}
+        className="w-full py-3 bg-primary text-primary-foreground font-medium rounded-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-2 disabled:opacity-50"
+      >
         {sending ? "Sending…" : "Send Message"}
         {!sending && <span>➤</span>}
       </button>
-      {status === "success" && <p className="text-sm text-green-400 text-center">Message sent successfully!</p>}
-      {status === "error" && <p className="text-sm text-red-400 text-center">Failed to send. Please try again.</p>}
+      {status === "success" && (
+        <p className="text-sm text-green-400 text-center">
+          Message sent successfully!
+        </p>
+      )}
+      {status === "error" && (
+        <p className="text-sm text-red-400 text-center">
+          Failed to send. Please try again.
+        </p>
+      )}
     </form>
   );
 };
@@ -154,12 +186,12 @@ const EducationSection = () => {
                 {
                   label: "LINKEDIN",
                   value: "linkedin.com/in/iyed-marzouki",
-                  href: "https://linkedin.com/in/iyed-marzouki",
+                  href: "https://www.linkedin.com/in/iyed-marzouki/",
                 },
                 {
                   label: "GITHUB",
                   value: "github.com/iyedmarzougui",
-                  href: "https://github.com/iyedmarzougui",
+                  href: "https://github.com/iyedmarz",
                 },
               ].map((c) => (
                 <a
