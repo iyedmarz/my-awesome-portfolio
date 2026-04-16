@@ -1,5 +1,6 @@
 import { GraduationCap, Users } from "lucide-react";
-
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 /* ── Education data — easy to edit ── */
 const education = [
   {
@@ -32,6 +33,41 @@ const affiliations = [
       "De participant à encadrant : apprentissage de la programmation puis mentorat de jeunes apprenants.",
   },
 ];
+
+const ContactForm = () => {
+  const formRef = useRef<HTMLFormElement>(null);
+  const [sending, setSending] = useState(false);
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formRef.current) return;
+    setSending(true);
+    setStatus("idle");
+    emailjs
+      .sendForm("service_eajmmyj", "template_0inc7kn", formRef.current, "xte223UBcDtxZBAWZ")
+      .then(() => {
+        setStatus("success");
+        formRef.current?.reset();
+      })
+      .catch(() => setStatus("error"))
+      .finally(() => setSending(false));
+  };
+
+  return (
+    <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
+      <input name="from_name" type="text" placeholder="Name" className="w-full px-4 py-3 bg-secondary border border-border rounded-lg text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:border-primary transition-colors" />
+      <input name="from_email" type="email" placeholder="Email Address" className="w-full px-4 py-3 bg-secondary border border-border rounded-lg text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:border-primary transition-colors" />
+      <textarea name="message" placeholder="Message" rows={4} className="w-full px-4 py-3 bg-secondary border border-border rounded-lg text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:border-primary transition-colors resize-none" />
+      <button type="submit" disabled={sending} className="w-full py-3 bg-primary text-primary-foreground font-medium rounded-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-2 disabled:opacity-50">
+        {sending ? "Sending…" : "Send Message"}
+        {!sending && <span>➤</span>}
+      </button>
+      {status === "success" && <p className="text-sm text-green-400 text-center">Message sent successfully!</p>}
+      {status === "error" && <p className="text-sm text-red-400 text-center">Failed to send. Please try again.</p>}
+    </form>
+  );
+};
 
 const EducationSection = () => {
   return (
@@ -150,36 +186,7 @@ const EducationSection = () => {
             </div>
 
             {/* Contact form */}
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                window.location.href = `mailto:iyedmarz@gmail.com`;
-              }}
-              className="space-y-4"
-            >
-              <input
-                type="text"
-                placeholder="Name"
-                className="w-full px-4 py-3 bg-secondary border border-border rounded-lg text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:border-primary transition-colors"
-              />
-              <input
-                type="email"
-                placeholder="Email Address"
-                className="w-full px-4 py-3 bg-secondary border border-border rounded-lg text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:border-primary transition-colors"
-              />
-              <textarea
-                placeholder="Message"
-                rows={4}
-                className="w-full px-4 py-3 bg-secondary border border-border rounded-lg text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:border-primary transition-colors resize-none"
-              />
-              <button
-                type="submit"
-                className="w-full py-3 bg-primary text-primary-foreground font-medium rounded-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
-              >
-                Send Message
-                <span>➤</span>
-              </button>
-            </form>
+            <ContactForm />
           </div>
         </div>
       </div>
