@@ -1,5 +1,6 @@
 import { GraduationCap, Users } from "lucide-react";
-
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 /* ── Education data — easy to edit ── */
 const education = [
   {
@@ -150,36 +151,7 @@ const EducationSection = () => {
             </div>
 
             {/* Contact form */}
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                window.location.href = `mailto:iyedmarz@gmail.com`;
-              }}
-              className="space-y-4"
-            >
-              <input
-                type="text"
-                placeholder="Name"
-                className="w-full px-4 py-3 bg-secondary border border-border rounded-lg text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:border-primary transition-colors"
-              />
-              <input
-                type="email"
-                placeholder="Email Address"
-                className="w-full px-4 py-3 bg-secondary border border-border rounded-lg text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:border-primary transition-colors"
-              />
-              <textarea
-                placeholder="Message"
-                rows={4}
-                className="w-full px-4 py-3 bg-secondary border border-border rounded-lg text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:border-primary transition-colors resize-none"
-              />
-              <button
-                type="submit"
-                className="w-full py-3 bg-primary text-primary-foreground font-medium rounded-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
-              >
-                Send Message
-                <span>➤</span>
-              </button>
-            </form>
+            <ContactForm />
           </div>
         </div>
       </div>
