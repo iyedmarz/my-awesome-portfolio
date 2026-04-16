@@ -15,23 +15,23 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-      <div className="container flex items-center justify-between h-16">
-        <div className="flex items-center justify-center gap-4">
-          <div className="relative w-12 h-12 shrink-0">
+      <div className="container flex items-center justify-center h-16">
+        {/* <div className="flex items-center justify-center gap-4"> */}
+        {/* <div className="relative w-12 h-12 shrink-0">
             <div className="absolute inset-0 rounded-full bg-primary/30 animate-pulse" />
             <img
               src="/lovable-uploads/26e439cf-e0f5-41d2-baba-495715e4ae9d.png"
               alt="Iyed Marzougui"
               className="relative w-full h-full rounded-full object-cover border-2 border-primary/30"
             />
-          </div>
-          <a
+          </div> */}
+        {/* <a
             href="#home"
             className="text-lg font-bold font-heading text-foreground"
           >
             Iyed Marzougui
-          </a>
-        </div>
+          </a> */}
+        {/* </div> */}
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
