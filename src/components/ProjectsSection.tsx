@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ExternalLink, Github, X, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ExternalLink, Github, X, ArrowUpRight, ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const projects = [
@@ -163,6 +163,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
   const { lang, t } = useLanguage();
   const images = project.images && project.images.length > 0 ? project.images : [project.image];
   const [currentImg, setCurrentImg] = useState(0);
+  const [lightbox, setLightbox] = useState(false);
 
   const prev = () => setCurrentImg((i) => (i === 0 ? images.length - 1 : i - 1));
   const next = () => setCurrentImg((i) => (i === images.length - 1 ? 0 : i + 1));
@@ -174,6 +175,13 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
         <div className="relative h-48 overflow-hidden">
           <img src={images[currentImg]} alt={project.title} className="w-full h-full object-cover object-top transition-all duration-300" />
           <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent" />
+          <button
+            onClick={() => setLightbox(true)}
+            className="absolute top-3 right-3 bg-card/80 hover:bg-card rounded-full p-1.5 text-foreground transition-colors z-10"
+            aria-label="Enlarge image"
+          >
+            <Maximize2 size={16} />
+          </button>
           {images.length > 1 && (
             <>
               <button onClick={prev} className="absolute left-3 top-1/2 -translate-y-1/2 bg-card/70 hover:bg-card rounded-full p-1.5 text-foreground transition-colors z-10"><ChevronLeft size={18} /></button>
@@ -186,6 +194,40 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
             </>
           )}
         </div>
+
+        {lightbox && (
+          <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm animate-in fade-in duration-200" onClick={() => setLightbox(false)}>
+            <button
+              onClick={(e) => { e.stopPropagation(); setLightbox(false); }}
+              className="absolute top-4 right-4 bg-card/80 hover:bg-card rounded-full p-2 text-foreground transition-colors z-10"
+              aria-label="Close"
+            >
+              <X size={20} />
+            </button>
+            <img
+              src={images[currentImg]}
+              alt={project.title}
+              className="max-w-[95vw] max-h-[90vh] object-contain rounded-lg shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            />
+            {images.length > 1 && (
+              <>
+                <button
+                  onClick={(e) => { e.stopPropagation(); prev(); }}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 bg-card/80 hover:bg-card rounded-full p-2 text-foreground transition-colors z-10"
+                >
+                  <ChevronLeft size={24} />
+                </button>
+                <button
+                  onClick={(e) => { e.stopPropagation(); next(); }}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-card/80 hover:bg-card rounded-full p-2 text-foreground transition-colors z-10"
+                >
+                  <ChevronRight size={24} />
+                </button>
+              </>
+            )}
+          </div>
+        )}
 
         <div className="p-6">
           <button onClick={onClose} className="absolute right-4 top-4 text-muted-foreground hover:text-foreground transition-colors bg-card/80 rounded-full p-1"><X size={20} /></button>
