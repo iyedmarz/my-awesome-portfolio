@@ -177,7 +177,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
           <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent" />
           <button
             onClick={() => setLightbox(true)}
-            className="absolute top-3 right-3 bg-card/80 hover:bg-card rounded-full p-1.5 text-foreground transition-colors z-10"
+            className="absolute top-3 left-3 bg-card/80 hover:bg-card rounded-full p-1.5 text-foreground transition-colors z-20"
             aria-label="Enlarge image"
           >
             <Maximize2 size={16} />
