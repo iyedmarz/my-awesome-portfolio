@@ -17,7 +17,7 @@ const HeroSection = () => {
       <div className="container">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div>
-            <div className="flex items-center gap-5 mb-8">
+            <div className="flex items-center gap-5 mt-4 mb-8">
               <div className="relative w-20 h-20 shrink-0">
                 <div className="absolute inset-0 rounded-full bg-primary/30 animate-pulse" />
                 <img
@@ -56,10 +56,16 @@ const HeroSection = () => {
             </div>
 
             <div className="flex gap-4">
-              <a href="#contact" className="px-6 py-3 bg-primary text-primary-foreground font-medium rounded-lg hover:opacity-90 transition-opacity">
+              <a
+                href="#contact"
+                className="px-6 py-3 bg-primary text-primary-foreground font-medium rounded-lg hover:opacity-90 transition-opacity"
+              >
                 {t.hero.cta}
               </a>
-              <a href="#experience" className="px-6 py-3 border border-border text-foreground font-medium rounded-lg hover:border-primary hover:text-primary transition-all">
+              <a
+                href="#experience"
+                className="px-6 py-3 border border-border text-foreground font-medium rounded-lg hover:border-primary hover:text-primary transition-all"
+              >
                 {t.hero.work}
               </a>
             </div>
@@ -76,8 +82,15 @@ const HeroSection = () => {
                 "col-span-2 row-span-1",
               ];
               return (
-                <div key={i} className={`relative rounded-xl overflow-hidden border border-border group ${spans[i]}`}>
-                  <img src={img.src} alt={img.alt} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                <div
+                  key={i}
+                  className={`relative rounded-xl overflow-hidden border border-border group ${spans[i]}`}
+                >
+                  <img
+                    src={img.src}
+                    alt={img.alt}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
               );
@@ -85,7 +98,10 @@ const HeroSection = () => {
           </div>
         </div>
 
-        <a href="#skills" className="mt-16 inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors animate-bounce">
+        <a
+          href="#skills"
+          className="mt-16 inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors animate-bounce"
+        >
           <ArrowDown size={20} />
         </a>
       </div>
