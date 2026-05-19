@@ -173,7 +173,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
       <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
       <div className="relative z-10 w-full max-w-2xl max-h-[90vh] bg-card border border-border rounded-2xl shadow-2xl animate-in fade-in zoom-in-95 duration-200 overflow-y-auto" onClick={(e) => e.stopPropagation()}>
         <div className="relative h-48 overflow-hidden">
-          <img src={images[currentImg]} alt={project.title} loading="lazy" decoding="async" className="w-full h-full object-cover object-top transition-all duration-300" />
+          <img src={images[currentImg]} alt={project.title} loading="lazy" decoding="async" onClick={() => setLightbox(true)} className="w-full h-full object-cover object-top transition-all duration-300 cursor-zoom-in" />
           <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent" />
           <button
             onClick={() => setLightbox(true)}
