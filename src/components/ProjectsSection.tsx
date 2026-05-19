@@ -19,8 +19,8 @@ const projects = [
       en: ["Interactive quiz system with auto-correction", "Performance tracking dashboard", "Responsive and accessible interface"],
       fr: ["Système de quiz interactif avec correction automatique", "Tableau de bord de suivi des performances", "Interface responsive et accessible"],
     },
-    image: "/IRIS1.png",
-    images: ["/IRIS1.png", "/IRIS2.png", "/IRIS3.png", "/IRIS4.png", "/IRIS5.png", "/IRIS6.png", "/IRIS7.png", "/IRIS8.png"],
+    image: "/IRIS1.webp",
+    images: ["/IRIS1.webp", "/IRIS2.webp", "/IRIS3.webp", "/IRIS4.webp", "/IRIS5.webp", "/IRIS6.webp", "/IRIS7.webp", "/IRIS8.webp"],
     github: "#",
     demo: "#",
   },
@@ -40,8 +40,8 @@ const projects = [
       en: ["Dynamic and filterable product catalog", "Mobile-first optimized shopping experience", "Complete Shopify integration"],
       fr: ["Catalogue produits dynamique et filtrable", "Expérience d'achat optimisée mobile-first", "Intégration Shopify complète"],
     },
-    image: "/TWIZZY0.png",
-    images: ["/TWIZZY0.png", "/twizzy1.png", "/twizzy2.png"],
+    image: "/TWIZZY0.webp",
+    images: ["/TWIZZY0.webp", "/twizzy1.webp", "/twizzy2.webp"],
     github: "#",
     demo: "https://twizzytn.myshopify.com/",
   },
@@ -61,8 +61,8 @@ const projects = [
       en: ["Containerized architecture with Docker", "Advanced state management with Redux", "Agile / Scrum methodology"],
       fr: ["Architecture conteneurisée avec Docker", "Gestion d'état avancée avec Redux", "Méthodologie Agile / Scrum"],
     },
-    image: "/trip1.png",
-    images: ["/trip1.png", "/trip2.png", "/trip3.png", "/trip4.png"],
+    image: "/trip1.webp",
+    images: ["/trip1.webp", "/trip2.webp", "/trip3.webp", "/trip4.webp"],
     github: "#",
     demo: "https://www.trip-hive.com/",
   },
@@ -82,8 +82,8 @@ const projects = [
       en: ["Computer vision for product detection", "Machine Learning with TensorFlow", "Desktop application with Tauri"],
       fr: ["Vision par ordinateur pour la détection des produits", "Machine Learning avec TensorFlow", "Application desktop avec Tauri"],
     },
-    image: "/SCO1.png",
-    images: ["/SCO1.png", "/SCO2.png", "/SCO3.png", "/SCO4.png", "/SCO5.png", "/SCO6.png"],
+    image: "/SCO1.webp",
+    images: ["/SCO1.webp", "/SCO2.webp", "/SCO3.webp", "/SCO4.webp", "/SCO5.webp", "/SCO6.webp"],
     github: "#",
     demo: "#",
   },
@@ -103,8 +103,8 @@ const projects = [
       en: ["Interactive menu with detailed descriptions", "Online ordering for delivery or pickup", "Responsive and modern interface"],
       fr: ["Menu interactif avec descriptions détaillées", "Commande en ligne pour livraison ou retrait", "Interface responsive et moderne"],
     },
-    image: "/foodtuck.png",
-    images: ["/foodtuck.png"],
+    image: "/foodtuck.webp",
+    images: ["/foodtuck.webp"],
     github: "#",
     demo: "#",
   },
@@ -145,7 +145,7 @@ function ProjectCard({ project, span, onClick, className = "" }: { project: Proj
   const { lang } = useLanguage();
   return (
     <div onClick={onClick} className={`${span} ${className} group cursor-pointer rounded-2xl border border-border overflow-hidden relative min-h-[340px] flex flex-col justify-end`}>
-      <img src={project.image} alt={project.title} className="absolute inset-0 w-full h-full object-cover object-top opacity-40 group-hover:opacity-50 transition-opacity duration-500" />
+      <img src={project.image} alt={project.title} loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover object-top opacity-40 group-hover:opacity-50 transition-opacity duration-500" />
       <div className="absolute inset-0 bg-gradient-to-t from-card via-card/80 to-transparent" />
       <div className="relative p-6 z-10">
         <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-primary mb-2 block">{project.category}</span>
@@ -173,7 +173,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
       <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
       <div className="relative z-10 w-full max-w-2xl max-h-[90vh] bg-card border border-border rounded-2xl shadow-2xl animate-in fade-in zoom-in-95 duration-200 overflow-y-auto" onClick={(e) => e.stopPropagation()}>
         <div className="relative h-48 overflow-hidden">
-          <img src={images[currentImg]} alt={project.title} className="w-full h-full object-cover object-top transition-all duration-300" />
+          <img src={images[currentImg]} alt={project.title} loading="lazy" decoding="async" className="w-full h-full object-cover object-top transition-all duration-300" />
           <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent" />
           <button
             onClick={() => setLightbox(true)}
@@ -207,6 +207,8 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
             <img
               src={images[currentImg]}
               alt={project.title}
+              loading="eager"
+              decoding="async"
               className="max-w-[95vw] max-h-[90vh] object-contain rounded-lg shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             />
