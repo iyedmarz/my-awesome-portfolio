@@ -145,7 +145,7 @@ function ProjectCard({ project, span, onClick, className = "" }: { project: Proj
   const { lang } = useLanguage();
   return (
     <div onClick={onClick} className={`${span} ${className} group cursor-pointer rounded-2xl border border-border overflow-hidden relative min-h-[340px] flex flex-col justify-end`}>
-      <img src={project.image} alt={project.title} className="absolute inset-0 w-full h-full object-cover object-top opacity-40 group-hover:opacity-50 transition-opacity duration-500" />
+      <img src={project.image} alt={project.title} loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover object-top opacity-40 group-hover:opacity-50 transition-opacity duration-500" />
       <div className="absolute inset-0 bg-gradient-to-t from-card via-card/80 to-transparent" />
       <div className="relative p-6 z-10">
         <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-primary mb-2 block">{project.category}</span>
@@ -173,7 +173,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
       <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
       <div className="relative z-10 w-full max-w-2xl max-h-[90vh] bg-card border border-border rounded-2xl shadow-2xl animate-in fade-in zoom-in-95 duration-200 overflow-y-auto" onClick={(e) => e.stopPropagation()}>
         <div className="relative h-48 overflow-hidden">
-          <img src={images[currentImg]} alt={project.title} className="w-full h-full object-cover object-top transition-all duration-300" />
+          <img src={images[currentImg]} alt={project.title} loading="lazy" decoding="async" className="w-full h-full object-cover object-top transition-all duration-300" />
           <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent" />
           <button
             onClick={() => setLightbox(true)}
@@ -207,6 +207,8 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
             <img
               src={images[currentImg]}
               alt={project.title}
+              loading="eager"
+              decoding="async"
               className="max-w-[95vw] max-h-[90vh] object-contain rounded-lg shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             />
