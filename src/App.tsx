@@ -12,6 +12,7 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
+    <Analytics />
     <ThemeProvider>
       <LanguageProvider>
         <TooltipProvider>
@@ -21,7 +22,6 @@ const App = () => (
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="*" element={<NotFound />} />
-              <Analytics />
             </Routes>
           </BrowserRouter>
         </TooltipProvider>
