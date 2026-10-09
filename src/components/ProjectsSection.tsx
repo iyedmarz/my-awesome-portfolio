@@ -4,6 +4,48 @@ import { useLanguage } from "@/contexts/LanguageContext";
 
 const projects = [
   {
+    category: "SAAS / PRODUCTIVITY",
+    title: "CandidTrack",
+    description: {
+      en: "Job application tracking web app that centralises the entire job search in one place.",
+      fr: "Application web de suivi de candidatures qui centralise toute la recherche d'emploi au même endroit.",
+    },
+    fullDescription: {
+      en: "CandidTrack is a job application tracking web app that centralises the entire job search in one place. It automatically extracts a job offer's details from a simple link, and updates the status of each application (interview, rejection, offer) by analysing recruiter emails forwarded to a dedicated address. A dashboard and statistics let you track your response rate and progress.",
+      fr: "Application web de suivi de candidatures qui centralise toute la recherche d'emploi au même endroit. Elle extrait automatiquement les informations d'une offre à partir d'un simple lien, et met à jour le statut de chaque candidature (entretien, refus, offre) en analysant les emails de recruteurs transférés vers une adresse dédiée. Un tableau de bord et des statistiques permettent de suivre son taux de réponse et sa progression.",
+    },
+    tech: ["React", "Vite", "TypeScript", "Supabase", "Mailgun", "OAuth", "Lovable"],
+    highlights: {
+      en: ["Automatic job offer extraction from a link", "Status updates from forwarded recruiter emails", "Dashboard and response-rate statistics"],
+      fr: ["Extraction automatique d'une offre depuis un lien", "Mise à jour des statuts via les emails de recruteurs", "Tableau de bord et statistiques de réponse"],
+    },
+    image: "/candidtrack1.webp",
+    images: ["/candidtrack1.webp", "/candidtrack2.webp", "/candidtrack3.webp", "/candidtrack4.webp"],
+    github: "#",
+    demo: "https://candidtrack.com",
+  },
+  {
+    category: "EDTECH / DEVOPS",
+    title: "Luminaa",
+    description: {
+      en: "School management platform centralising students, teachers, timetables and grades.",
+      fr: "Plateforme de gestion scolaire centralisant élèves, enseignants, emplois du temps et notes.",
+    },
+    fullDescription: {
+      en: "Luminaa is a school management platform designed to centralise the day-to-day life of an institution: students, teachers, timetables, grades and role-based authentication. Built with Next.js, FastAPI and PostgreSQL, and containerised with Docker, it follows a progressive evolution: CI/CD with GitHub Actions, cloud deployment on AWS, monitoring with Prometheus and Grafana, then orchestration, infrastructure as code and automations.",
+      fr: "Luminaa est une plateforme de gestion scolaire conçue pour centraliser le quotidien d'un établissement : élèves, enseignants, emplois du temps, notes et authentification par rôles. Construite avec Next.js, FastAPI et PostgreSQL, et conteneurisée avec Docker, elle suit une évolution progressive : CI/CD avec GitHub Actions, déploiement cloud sur AWS, monitoring avec Prometheus et Grafana, puis orchestration, infrastructure as code et automatisations.",
+    },
+    tech: ["Next.js", "FastAPI", "PostgreSQL", "Docker", "AWS", "GitHub Actions", "Kubernetes", "Terraform", "n8n", "Prometheus", "Grafana"],
+    highlights: {
+      en: ["Role-based authentication", "Students, teachers, timetables and grades management", "DevOps roadmap: CI/CD, AWS, monitoring, IaC"],
+      fr: ["Authentification par rôles", "Gestion des élèves, enseignants, emplois du temps et notes", "Feuille de route DevOps : CI/CD, AWS, monitoring, IaC"],
+    },
+    image: "/luminaa-cover.webp",
+    images: ["/luminaa-cover.webp", "/luminaa3.webp", "/luminaa2.webp", "/luminaa4.webp", "/luminaa1.webp"],
+    github: "#",
+    demo: "#",
+  },
+  {
     category: "EDUCATION PLATFORM",
     title: "IRIS Exam",
     description: {
@@ -131,7 +173,9 @@ const ProjectsSection = () => {
             <ProjectCard project={projects[1]} span="md:col-span-5" onClick={() => setSelected(projects[1])} />
             <ProjectCard project={projects[2]} span="md:col-span-5" onClick={() => setSelected(projects[2])} className="mt-6" />
             <ProjectCard project={projects[3]} span="md:col-span-7" onClick={() => setSelected(projects[3])} className="mt-6" />
-            <ProjectCard project={projects[4]} span="md:col-span-12" onClick={() => setSelected(projects[4])} className="mt-6" />
+            <ProjectCard project={projects[4]} span="md:col-span-7" onClick={() => setSelected(projects[4])} className="mt-6" />
+            <ProjectCard project={projects[5]} span="md:col-span-5" onClick={() => setSelected(projects[5])} className="mt-6" />
+            <ProjectCard project={projects[6]} span="md:col-span-12" onClick={() => setSelected(projects[6])} className="mt-6" />
           </div>
         </div>
       </section>
