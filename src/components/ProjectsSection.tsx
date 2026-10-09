@@ -173,7 +173,9 @@ const ProjectsSection = () => {
             <ProjectCard project={projects[1]} span="md:col-span-5" onClick={() => setSelected(projects[1])} />
             <ProjectCard project={projects[2]} span="md:col-span-5" onClick={() => setSelected(projects[2])} className="mt-6" />
             <ProjectCard project={projects[3]} span="md:col-span-7" onClick={() => setSelected(projects[3])} className="mt-6" />
-            <ProjectCard project={projects[4]} span="md:col-span-12" onClick={() => setSelected(projects[4])} className="mt-6" />
+            <ProjectCard project={projects[4]} span="md:col-span-7" onClick={() => setSelected(projects[4])} className="mt-6" />
+            <ProjectCard project={projects[5]} span="md:col-span-5" onClick={() => setSelected(projects[5])} className="mt-6" />
+            <ProjectCard project={projects[6]} span="md:col-span-12" onClick={() => setSelected(projects[6])} className="mt-6" />
           </div>
         </div>
       </section>
